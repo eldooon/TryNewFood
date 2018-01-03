@@ -3,7 +3,7 @@
 //  TryNewFood
 //
 //  Created by Eldon Chan on 1/2/18.
-//  Copyright © 2018 ByEldon. All rights reserved.
+//  Copyright © 2018 ByEldon. All rights res.erved.
 //
 
 import UIKit

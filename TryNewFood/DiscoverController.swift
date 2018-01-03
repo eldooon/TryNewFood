@@ -28,7 +28,10 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        
+        let itemDetailController = ItemDetailController()
+        
+        navigationController?.pushViewController(itemDetailController, animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
