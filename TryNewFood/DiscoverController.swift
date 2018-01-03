@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class DiscoverController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     let headerId = "headerId"

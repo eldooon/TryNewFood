@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BEA25B5F1FFC151300FFD021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA25B5E1FFC151300FFD021 /* AppDelegate.swift */; };
-		BEA25B611FFC151300FFD021 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA25B601FFC151300FFD021 /* ViewController.swift */; };
+		BEA25B611FFC151300FFD021 /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA25B601FFC151300FFD021 /* DiscoverController.swift */; };
 		BEA25B661FFC151300FFD021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEA25B651FFC151300FFD021 /* Assets.xcassets */; };
 		BEA25B691FFC151300FFD021 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA25B671FFC151300FFD021 /* LaunchScreen.storyboard */; };
 		BEA25B711FFC201B00FFD021 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA25B701FFC201B00FFD021 /* TabBarController.swift */; };
@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		BEA25B5B1FFC151300FFD021 /* TryNewFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TryNewFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA25B5E1FFC151300FFD021 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BEA25B601FFC151300FFD021 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BEA25B601FFC151300FFD021 /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
 		BEA25B651FFC151300FFD021 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEA25B681FFC151300FFD021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEA25B6A1FFC151300FFD021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				BEA25B5E1FFC151300FFD021 /* AppDelegate.swift */,
-				BEA25B601FFC151300FFD021 /* ViewController.swift */,
+				BEA25B601FFC151300FFD021 /* DiscoverController.swift */,
 				BEA25B731FFC383B00FFD021 /* ItemCell.swift */,
 				BEA25B701FFC201B00FFD021 /* TabBarController.swift */,
 				BEA25B751FFC388F00FFD021 /* UIView+layout.swift */,
@@ -144,7 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEA25B611FFC151300FFD021 /* ViewController.swift in Sources */,
+				BEA25B611FFC151300FFD021 /* DiscoverController.swift in Sources */,
 				BEA25B761FFC388F00FFD021 /* UIView+layout.swift in Sources */,
 				BEA25B5F1FFC151300FFD021 /* AppDelegate.swift in Sources */,
 				BEA25B741FFC383B00FFD021 /* ItemCell.swift in Sources */,

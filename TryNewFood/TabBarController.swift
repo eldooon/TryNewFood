@@ -22,7 +22,7 @@ class TabBarController: UITabBarController {
         
         // Setting each controller to tab bar controller and setting them as navigation controller
         
-        let homeController = ViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let homeController = DiscoverController(collectionViewLayout: UICollectionViewFlowLayout())
         
         let navController = UINavigationController(rootViewController: homeController)
         
