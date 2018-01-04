@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class DiscoverController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     let headerId = "headerId"
-
+    let data = Database.database().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

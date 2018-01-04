@@ -7,5 +7,6 @@ target 'TryNewFood' do
 
   # Pods for TryNewFood
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
 end
