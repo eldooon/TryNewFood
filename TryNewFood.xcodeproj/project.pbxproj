@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8672013FF92F05C327E14750 /* Pods_TryNewFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A95E52BF93D66143807E72 /* Pods_TryNewFood.framework */; };
 		BEA25B5F1FFC151300FFD021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA25B5E1FFC151300FFD021 /* AppDelegate.swift */; };
 		BEA25B611FFC151300FFD021 /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA25B601FFC151300FFD021 /* DiscoverController.swift */; };
 		BEA25B661FFC151300FFD021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEA25B651FFC151300FFD021 /* Assets.xcassets */; };
@@ -16,9 +17,11 @@
 		BEA25B761FFC388F00FFD021 /* UIView+layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA25B751FFC388F00FFD021 /* UIView+layout.swift */; };
 		BEA25B781FFC389600FFD021 /* UIColor+themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA25B771FFC389600FFD021 /* UIColor+themes.swift */; };
 		BEE1C42B1FFD601000DBE41B /* ItemDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE1C42A1FFD601000DBE41B /* ItemDetailController.swift */; };
+		BEE1C42D1FFEBDD100DBE41B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE1C42C1FFEBDD100DBE41B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		41A95E52BF93D66143807E72 /* Pods_TryNewFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TryNewFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA25B5B1FFC151300FFD021 /* TryNewFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TryNewFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA25B5E1FFC151300FFD021 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEA25B601FFC151300FFD021 /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
@@ -30,6 +33,9 @@
 		BEA25B751FFC388F00FFD021 /* UIView+layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+layout.swift"; sourceTree = "<group>"; };
 		BEA25B771FFC389600FFD021 /* UIColor+themes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+themes.swift"; sourceTree = "<group>"; };
 		BEE1C42A1FFD601000DBE41B /* ItemDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailController.swift; sourceTree = "<group>"; };
+		BEE1C42C1FFEBDD100DBE41B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C75243C3357379C0053DBECB /* Pods-TryNewFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TryNewFood.release.xcconfig"; path = "Pods/Target Support Files/Pods-TryNewFood/Pods-TryNewFood.release.xcconfig"; sourceTree = "<group>"; };
+		CCBB1DECD9226ADE8590A05F /* Pods-TryNewFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TryNewFood.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TryNewFood/Pods-TryNewFood.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8672013FF92F05C327E14750 /* Pods_TryNewFood.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF62E9C108FDDD30E8DDCB70 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				41A95E52BF93D66143807E72 /* Pods_TryNewFood.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BEA25B521FFC151300FFD021 = {
 			isa = PBXGroup;
 			children = (
 				BEA25B5D1FFC151300FFD021 /* TryNewFood */,
 				BEA25B5C1FFC151300FFD021 /* Products */,
+				D0149852D2BB86C724022F9F /* Pods */,
+				AF62E9C108FDDD30E8DDCB70 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,8 +89,18 @@
 				BEA25B651FFC151300FFD021 /* Assets.xcassets */,
 				BEA25B671FFC151300FFD021 /* LaunchScreen.storyboard */,
 				BEA25B6A1FFC151300FFD021 /* Info.plist */,
+				BEE1C42C1FFEBDD100DBE41B /* GoogleService-Info.plist */,
 			);
 			path = TryNewFood;
+			sourceTree = "<group>";
+		};
+		D0149852D2BB86C724022F9F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CCBB1DECD9226ADE8590A05F /* Pods-TryNewFood.debug.xcconfig */,
+				C75243C3357379C0053DBECB /* Pods-TryNewFood.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEA25B6D1FFC151300FFD021 /* Build configuration list for PBXNativeTarget "TryNewFood" */;
 			buildPhases = (
+				AA306FEB98021D5B864D10A4 /* [CP] Check Pods Manifest.lock */,
 				BEA25B571FFC151300FFD021 /* Sources */,
 				BEA25B581FFC151300FFD021 /* Frameworks */,
 				BEA25B591FFC151300FFD021 /* Resources */,
+				102FCDF49B097B9F32C02F44 /* [CP] Embed Pods Frameworks */,
+				48CEA10B90B46481E094CCF2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,10 +167,59 @@
 			files = (
 				BEA25B691FFC151300FFD021 /* LaunchScreen.storyboard in Resources */,
 				BEA25B661FFC151300FFD021 /* Assets.xcassets in Resources */,
+				BEE1C42D1FFEBDD100DBE41B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		102FCDF49B097B9F32C02F44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TryNewFood/Pods-TryNewFood-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48CEA10B90B46481E094CCF2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TryNewFood/Pods-TryNewFood-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA306FEB98021D5B864D10A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BEA25B571FFC151300FFD021 /* Sources */ = {
@@ -280,6 +359,7 @@
 		};
 		BEA25B6E1FFC151300FFD021 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCBB1DECD9226ADE8590A05F /* Pods-TryNewFood.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -295,6 +375,7 @@
 		};
 		BEA25B6F1FFC151300FFD021 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C75243C3357379C0053DBECB /* Pods-TryNewFood.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
