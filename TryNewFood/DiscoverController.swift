@@ -14,7 +14,6 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     
     let cellId = "cellId"
     let headerId = "headerId"
-    let data = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
