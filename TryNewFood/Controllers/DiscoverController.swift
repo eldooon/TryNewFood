@@ -27,6 +27,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         title = "Discover"
         collectionView?.backgroundColor = .white
         collectionView?.register(ItemCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
     }
 
@@ -74,5 +75,16 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         return CGSize(width: width, height: height)
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 50)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+        
+        header.backgroundColor = .blue
+        
+        return header
+    }
 }
 
