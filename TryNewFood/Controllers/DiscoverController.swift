@@ -70,19 +70,31 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 2) / 2
+        let width = (view.frame.width - 2)
         let height = view.frame.height / 3
         return CGSize(width: width, height: height)
     }
 
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 50)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderCell
         
-        header.titleLabel.text = "Featured"
+        var header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderCell
+        
+        if indexPath.section == 0 {
+            
+            header.titleLabel.text = "Featured"
+        }
+        
+        if indexPath.section != 0 {
+            
+            header.titleLabel.text = "Section" //Temporary
+        }
         
         return header
     }
