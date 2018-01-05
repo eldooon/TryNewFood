@@ -10,7 +10,7 @@ import UIKit
 
 class ItemCell: UICollectionViewCell {
     
-    let itemImageView : UIImageView = {
+    var itemImageView : UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .blue
         return iv

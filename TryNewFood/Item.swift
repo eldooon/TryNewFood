@@ -16,24 +16,15 @@ public class Item {
     var info = String()
     var description = String()
     
-    init(Image: UIImage, Name: String, Info: String, Description: String){
+    init(dictionary: [String: Any]) {
         
-        image = Image
-        name = Name
-        info = Info
-        description = Description
-        
-    }
-    
-    init(snapshot: DataSnapshot) {
-        let snapshotValue = snapshot.value as! [String: AnyObject]
-        let imageURL = URL(fileURLWithPath: snapshotValue["Image"] as! String)
-        guard let imagedata = try? Data(contentsOf: imageURL) else { return }
-        guard let fireImage = UIImage(data: imagedata) else { return }
-        image = fireImage
-        name = snapshotValue["Name"] as! String
-        info = snapshotValue["Info"] as! String
-        description = snapshotValue["Description"] as! String
+        let imageURL = URL(string: dictionary["Image"] as? String ?? "")
+        guard let imageData = try? Data(contentsOf: imageURL!) else { return }
+        self.image = UIImage(data: imageData)!
+//        self.image = UIImage()
+        self.name = dictionary["Name"] as? String ?? ""
+        self.info = dictionary["Info"] as? String ?? ""
+        self.description = dictionary["Description"] as? String ?? ""
     }
     
 }

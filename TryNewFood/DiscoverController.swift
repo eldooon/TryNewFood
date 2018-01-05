@@ -14,14 +14,20 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     
     let cellId = "cellId"
     let headerId = "headerId"
+    let database = FirebaseData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        database.retrieveData {
+            self.collectionView?.reloadData()
+            dump(self.database.firebaseData)
+        }
         title = "Discover"
         collectionView?.backgroundColor = .white
         collectionView?.register(ItemCell.self, forCellWithReuseIdentifier: cellId)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,11 +43,14 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10 //temp number
+        return database.firebaseData.count
     }
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ItemCell
+        
+        cell.itemImageView.image = database.firebaseData[indexPath.item].image
+        cell.itemNameLabel.text = database.firebaseData[indexPath.item].name
         
         return cell
     }
