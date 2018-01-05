@@ -38,6 +38,11 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let itemDetailController = ItemDetailController()
+        let data = database.firebaseData[indexPath.item]
+        itemDetailController.itemNameLabel.text = data.name
+        itemDetailController.itemInfoLabel.text = data.info
+        itemDetailController.itemImageView.image = data.image
+        itemDetailController.descriptionTextView.text = data.description
         
         navigationController?.pushViewController(itemDetailController, animated: true)
     }

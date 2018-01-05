@@ -27,7 +27,7 @@ class ItemDetailController: UIViewController {
         return label
     }()
     
-    let itemDescriptionLabel : UILabel = {
+    let itemInfoLabel : UILabel = {
         let label = UILabel()
         label.text = "Item Description"
         return label
@@ -103,11 +103,11 @@ class ItemDetailController: UIViewController {
         contentView.addSubview(itemNameLabel)
         itemNameLabel.anchor(centerX: contentView.centerXAnchor, centerY: nil, top: contentView.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
        
-        contentView.addSubview(itemDescriptionLabel)
-        itemDescriptionLabel.anchor(centerX: contentView.centerXAnchor, centerY: nil, top: itemNameLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        contentView.addSubview(itemInfoLabel)
+        itemInfoLabel.anchor(centerX: contentView.centerXAnchor, centerY: nil, top: itemNameLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         contentView.addSubview(itemImageView)
-        itemImageView.anchor(centerX: contentView.centerXAnchor, centerY: nil, top: itemDescriptionLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 300)
+        itemImageView.anchor(centerX: contentView.centerXAnchor, centerY: nil, top: itemInfoLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 300)
         
         contentView.addSubview(priceLabel)
         priceLabel.anchor(centerX: nil, centerY: nil, top: itemImageView.bottomAnchor, left: itemImageView.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 7, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
