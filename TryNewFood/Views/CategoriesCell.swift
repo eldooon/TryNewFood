@@ -21,8 +21,16 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
         return collectionView
     }()
     
+    let database = FirebaseData()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        database.retrieveData {
+            self.itemCollectionView.reloadData()
+            dump(self.database.firebaseData)
+        }
         
         backgroundColor = .green
         itemCollectionView.dataSource = self
@@ -43,11 +51,15 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return database.firebaseData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ItemCell
+        
+        cell.itemImageView.image = database.firebaseData[indexPath.item].image
+        cell.itemNameLabel.text = database.firebaseData[indexPath.item].name
+
 
         return cell
     }
@@ -61,7 +73,15 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        
+//        let itemDetailController = ItemDetailController()
+//        let data = database.firebaseData[indexPath.item]
+//        itemDetailController.itemNameLabel.text = data.name
+//        itemDetailController.itemInfoLabel.text = data.info
+//        itemDetailController.itemImageView.image = data.image
+//        itemDetailController.descriptionTextView.text = data.description
+//        
+//        navigationController?.pushViewController(itemDetailController, animated: true)
         
     }
     

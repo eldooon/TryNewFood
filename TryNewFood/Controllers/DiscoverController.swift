@@ -14,16 +14,11 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     
     let cellId = "cellId"
     let headerId = "headerId"
-    let database = FirebaseData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        database.retrieveData {
-            self.collectionView?.reloadData()
-            dump(self.database.firebaseData)
-        }
         title = "Discover"
         collectionView?.backgroundColor = .white
         collectionView?.register(CategoriesCell.self, forCellWithReuseIdentifier: cellId)
@@ -38,14 +33,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let itemDetailController = ItemDetailController()
-        let data = database.firebaseData[indexPath.item]
-        itemDetailController.itemNameLabel.text = data.name
-        itemDetailController.itemInfoLabel.text = data.info
-        itemDetailController.itemImageView.image = data.image
-        itemDetailController.descriptionTextView.text = data.description
-        
-        navigationController?.pushViewController(itemDetailController, animated: true)
+        //
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,10 +42,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
-        
-//        cell.itemImageView.image = database.firebaseData[indexPath.item].image
-//        cell.itemNameLabel.text = database.firebaseData[indexPath.item].name
-        
+                
         return cell
     }
     
