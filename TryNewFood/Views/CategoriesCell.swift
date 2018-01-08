@@ -16,9 +16,7 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = UIColor.blue
         
         return collectionView
     }()
@@ -40,6 +38,8 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     
     private func createLayout() {
         
+        addSubview(itemCollectionView)
+        itemCollectionView.anchor(centerX: nil, centerY: nil, top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
