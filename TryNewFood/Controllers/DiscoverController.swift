@@ -16,6 +16,7 @@ class DiscoverController: UIViewController, UICollectionViewDelegateFlowLayout, 
     let headerId = "headerId"
     let database = FirebaseData()
     var collectionView: UICollectionView!
+    var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,9 @@ class DiscoverController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
         title = "Discover"
         
+        //Collectionview properties
         let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -36,6 +38,8 @@ class DiscoverController: UIViewController, UICollectionViewDelegateFlowLayout, 
         collectionView.register(ItemCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
+
+        configurePageControl()
         createLayout()
         
     }
@@ -47,9 +51,23 @@ class DiscoverController: UIViewController, UICollectionViewDelegateFlowLayout, 
 
     private func createLayout() {
     
+        view.addSubview(pageControl)
+        pageControl.anchor(centerX: nil, centerY: nil, top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.centerYAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
         view.addSubview(collectionView)
-        collectionView.anchor(centerX: nil, centerY: nil, top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        collectionView.anchor(centerX: nil, centerY: nil, top: view.centerYAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
+    
+    func configurePageControl() {
+        self.pageControl = UIPageControl(frame: view.frame)
+        self.pageControl.backgroundColor = .white
+        self.pageControl.numberOfPages = 4
+        self.pageControl.currentPage = 4
+        self.pageControl.tintColor = .red
+        self.pageControl.pageIndicatorTintColor = .black
+        self.pageControl.currentPageIndicatorTintColor = .green
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let itemDetailController = ItemDetailController()
@@ -91,8 +109,9 @@ class DiscoverController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 2
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 50)
     }
@@ -103,12 +122,12 @@ class DiscoverController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         if indexPath.section == 0 {
             
-            header.titleLabel.text = "Featured"
+            header.titleLabel.text = "Food"
         }
         
         if indexPath.section != 0 {
             
-            header.titleLabel.text = "Section" //Temporary
+            header.titleLabel.text = "Drinks" //Temporary
         }
         
         return header
