@@ -14,6 +14,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     
     let cellId = "cellId"
     let headerId = "headerId"
+    let database = FirebaseData.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +31,28 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //
-    }
     
+    func didSelectItemCell(Index: Int) {
+        
+        let itemDetailController = ItemDetailController()
+        let data = database.database[Index]
+        itemDetailController.itemNameLabel.text = data.name
+        itemDetailController.itemInfoLabel.text = data.info
+        itemDetailController.itemImageView.image = data.image
+        itemDetailController.descriptionTextView.text = data.description
+
+        navigationController?.pushViewController(itemDetailController, animated: true)
+        
+    }
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
-                
+        cell.discoverController = self
+        
         return cell
     }
     

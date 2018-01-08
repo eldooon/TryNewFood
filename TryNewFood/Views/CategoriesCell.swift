@@ -8,31 +8,32 @@
 
 import UIKit
 
+
 class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
     
-    fileprivate let cellId = "appCellId"
+    let cellId = "appCellId"
+    
+    var discoverController = DiscoverController()
     
     let itemCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.blue
+        collectionView.backgroundColor = .clear
         
         return collectionView
     }()
     
-    let database = FirebaseData()
-    
+    let database = FirebaseData.sharedInstance
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         database.retrieveData {
             self.itemCollectionView.reloadData()
-            dump(self.database.firebaseData)
+            dump(self.database.database)
         }
         
-        backgroundColor = .green
         itemCollectionView.dataSource = self
         itemCollectionView.delegate = self
         itemCollectionView.register(ItemCell.self, forCellWithReuseIdentifier: cellId)
@@ -51,14 +52,14 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return database.firebaseData.count
+        return database.database.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ItemCell
         
-        cell.itemImageView.image = database.firebaseData[indexPath.item].image
-        cell.itemNameLabel.text = database.firebaseData[indexPath.item].name
+        cell.itemImageView.image = database.database[indexPath.item].image
+        cell.itemNameLabel.text = database.database[indexPath.item].name
 
 
         return cell
@@ -74,14 +75,8 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        let itemDetailController = ItemDetailController()
-//        let data = database.firebaseData[indexPath.item]
-//        itemDetailController.itemNameLabel.text = data.name
-//        itemDetailController.itemInfoLabel.text = data.info
-//        itemDetailController.itemImageView.image = data.image
-//        itemDetailController.descriptionTextView.text = data.description
-//        
-//        navigationController?.pushViewController(itemDetailController, animated: true)
+        print("Pushing index", indexPath.item)
+        discoverController.didSelectItemCell(Index: indexPath.item)
         
     }
     

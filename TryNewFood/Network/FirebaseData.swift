@@ -10,7 +10,8 @@ import FirebaseDatabase
 
 class FirebaseData {
     
-    var firebaseData = [Item]()
+    static let sharedInstance = FirebaseData()
+    var database = [Item]()
     let ref = Database.database().reference(withPath: "Food")
     
     func retrieveData(completion: @escaping () -> ()) {
@@ -22,8 +23,9 @@ class FirebaseData {
             dictionaries.forEach({ (key, value) in
                 guard let dictionary = value as? [String: Any] else { return }
                 let item = Item(dictionary: dictionary)
-                self.firebaseData.append(item)
-                print(item)
+                self.database.append(item)
+                print("APPENDING!!!!!!!!!! -----")
+                dump(item)
             })
             completion()
         })
