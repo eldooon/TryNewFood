@@ -26,7 +26,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         }
         title = "Discover"
         collectionView?.backgroundColor = .white
-        collectionView?.register(ItemCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(CategoriesCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
     }
@@ -49,14 +49,14 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return database.firebaseData.count
+        return 1
     }
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
         
-        cell.itemImageView.image = database.firebaseData[indexPath.item].image
-        cell.itemNameLabel.text = database.firebaseData[indexPath.item].name
+//        cell.itemImageView.image = database.firebaseData[indexPath.item].image
+//        cell.itemNameLabel.text = database.firebaseData[indexPath.item].name
         
         return cell
     }
@@ -70,31 +70,30 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 2)
-        let height = view.frame.height / 3
-        return CGSize(width: width, height: height)
+        return CGSize(width: view.frame.width, height: 150)
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 2
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 50)
     }
     
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderCell
         
-        if indexPath.section == 0 {
-            
-            header.titleLabel.text = "Featured"
-        }
-        
-        if indexPath.section != 0 {
-            
-            header.titleLabel.text = "Section" //Temporary
-        }
+//        if indexPath.section == 0 {
+//
+//            header.titleLabel.text = "Featured"
+//        }
+//
+//        if indexPath.section != 0 {
+//
+//            header.titleLabel.text = "Section" //Temporary
+//        }
         
         return header
     }
