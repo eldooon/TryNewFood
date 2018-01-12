@@ -13,6 +13,9 @@ class ItemCell: UICollectionViewCell {
     var itemImageView : UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .blue
+        iv.contentMode = .scaleAspectFill
+        iv.layer.cornerRadius = 16
+        iv.layer.masksToBounds = true
         return iv
     }()
     
