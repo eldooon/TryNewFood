@@ -9,7 +9,12 @@
 import UIKit
 
 
-class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
+class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DiscoverControllerDelegate  {
+    
+    func didFetchData() {
+        print("RELOADING NOW!")
+        itemCollectionView.reloadData()
+    }
     
     let cellId = "appCellId"
     
@@ -29,16 +34,13 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        database.retrieveData {
-            self.itemCollectionView.reloadData()
-            dump(self.database.database)
-        }
-        
         itemCollectionView.dataSource = self
         itemCollectionView.delegate = self
         itemCollectionView.register(ItemCell.self, forCellWithReuseIdentifier: cellId)
+        itemCollectionView.reloadData()
         
         createLayout()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

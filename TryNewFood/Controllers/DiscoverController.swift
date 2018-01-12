@@ -10,11 +10,16 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+protocol DiscoverControllerDelegate {
+    func didFetchData()
+}
+
 class DiscoverController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     let headerId = "headerId"
     let database = FirebaseData.sharedInstance
+    var delegate: DiscoverControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +30,18 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.register(CategoriesCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(reloadData))
+        
+        database.retrieveData {
+            print("fetching data")
+            self.delegate?.didFetchData()
+        }
+        
+    }
+    
+    @objc func reloadData () {
+        print("attemping to reload")
+       self.delegate?.didFetchData()
     }
 
     override func didReceiveMemoryWarning() {

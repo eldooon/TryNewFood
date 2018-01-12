@@ -24,8 +24,7 @@ class FirebaseData {
                 guard let dictionary = value as? [String: Any] else { return }
                 let item = Item(dictionary: dictionary)
                 self.database.append(item)
-                print("APPENDING!!!!!!!!!! -----")
-                dump(item)
+//                dump(item)
             })
             completion()
         })
