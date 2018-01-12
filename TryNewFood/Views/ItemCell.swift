@@ -23,14 +23,23 @@ class ItemCell: UICollectionViewCell {
         return label
     }()
     
+    let ratingImageView : UIImageView = {
+        let iv = UIImageView()
+        iv.backgroundColor = .blue
+        return iv
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(itemImageView)
-        itemImageView.anchor(centerX: self.centerXAnchor, centerY: self.centerYAnchor, top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 20, paddingRight: 0, width: 0, height: 0)
+        itemImageView.anchor(centerX: self.centerXAnchor, centerY: self.centerYAnchor, top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 30, paddingRight: 0, width: 0, height: 0)
         
         addSubview(itemNameLabel)
-        itemNameLabel.anchor(centerX: nil, centerY: nil, top: itemImageView.bottomAnchor, left: itemImageView.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: 0, height: 0)
+        itemNameLabel.anchor(centerX: nil, centerY: nil, top: itemImageView.bottomAnchor, left: itemImageView.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        addSubview(ratingImageView)
+        ratingImageView.anchor(centerX: nil, centerY: nil, top: itemNameLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
     }
     
     required init?(coder aDecoder: NSCoder) {
