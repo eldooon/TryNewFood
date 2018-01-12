@@ -18,7 +18,7 @@ class ItemCell: UICollectionViewCell {
     
     let itemNameLabel : UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .black
         label.text = "Item Name"
         return label
     }()
@@ -27,10 +27,10 @@ class ItemCell: UICollectionViewCell {
         super.init(frame: frame)
         
         addSubview(itemImageView)
-        itemImageView.anchor(centerX: self.centerXAnchor, centerY: self.centerYAnchor, top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        itemImageView.anchor(centerX: self.centerXAnchor, centerY: self.centerYAnchor, top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 20, paddingRight: 0, width: 0, height: 0)
         
         addSubview(itemNameLabel)
-        itemNameLabel.anchor(centerX: nil, centerY: nil, top: nil, left: itemImageView.leftAnchor, bottom: itemImageView.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: 0, height: 0)
+        itemNameLabel.anchor(centerX: nil, centerY: nil, top: itemImageView.bottomAnchor, left: itemImageView.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: 0, height: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
