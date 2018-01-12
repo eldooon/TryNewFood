@@ -8,13 +8,11 @@
 
 import UIKit
 
+let reloadNotificationKey = "ByEldon.Reload"
 
-class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DiscoverControllerDelegate  {
+class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
     
-    func didFetchData() {
-        print("RELOADING NOW!")
-        itemCollectionView.reloadData()
-    }
+    let reload = Notification.Name(rawValue: reloadNotificationKey)
     
     let cellId = "appCellId"
     
@@ -38,15 +36,25 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
         itemCollectionView.delegate = self
         itemCollectionView.register(ItemCell.self, forCellWithReuseIdentifier: cellId)
         itemCollectionView.reloadData()
-        
         createLayout()
-        
+        createObserver()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func createObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataAfterFetch), name: reload, object: nil)
+    }
+    
+    @objc func reloadDataAfterFetch() {
+        itemCollectionView.reloadData()
+    }
     private func createLayout() {
         
         addSubview(itemCollectionView)
