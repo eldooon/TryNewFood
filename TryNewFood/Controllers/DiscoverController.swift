@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+let testAppCategories = ["Food", "Drinks"]
 
 class DiscoverController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -58,6 +59,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
+        cell.nameLabel.text = testAppCategories[indexPath.item]
         cell.discoverController = self
         
         return cell
