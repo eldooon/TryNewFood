@@ -27,6 +27,12 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
         return collectionView
     }()
     
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Name"
+        return label
+    }()
+    
     let database = FirebaseData.sharedInstance
     
     override init(frame: CGRect) {
@@ -57,8 +63,11 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     }
     private func createLayout() {
         
+        addSubview(nameLabel)
+        nameLabel.anchor(centerX: nil, centerY: nil, top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
         addSubview(itemCollectionView)
-        itemCollectionView.anchor(centerX: nil, centerY: nil, top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        itemCollectionView.anchor(centerX: nil, centerY: nil, top: nameLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
