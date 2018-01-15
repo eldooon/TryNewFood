@@ -10,6 +10,30 @@ import UIKit
 
 class ItemDetailController: UIViewController {
     
+    var item: Item? {
+        didSet {
+            
+            if let name = item?.name {
+                itemNameLabel.text = name
+            }
+            
+            if let info = item?.info {
+                itemInfoLabel.text = info
+            }
+        
+            if let info = item?.info {
+                itemInfoLabel.text = info
+            }
+            
+            if let image = item?.image {
+                itemImageView.image = image
+            }
+            
+            if let description = item?.description {
+                descriptionTextView.text = description
+            }
+        }
+    }
     
     var scrollView : UIScrollView = {
         let sv = UIScrollView()
