@@ -44,14 +44,10 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     
     func didSelectItemCell(item: Item) {
         
-//        let itemDetailController = ItemDetailController()
-//        let data = database.database[Index]
-//        itemDetailController.itemNameLabel.text = data.name
-//        itemDetailController.itemInfoLabel.text = data.info
-//        itemDetailController.itemImageView.image = data.image
-//        itemDetailController.descriptionTextView.text = data.description
-//
-//        navigationController?.pushViewController(itemDetailController, animated: true)
+        let itemDetailController = ItemDetailController()
+        itemDetailController.item = item
+        
+        navigationController?.pushViewController(itemDetailController, animated: true)
         
     }
 
