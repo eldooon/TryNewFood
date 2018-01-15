@@ -7,11 +7,31 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
-struct ItemCategory {
+class ItemCategory {
     
-    let name: String?
-    let items: [Item]?
+    var name: String?
+    var items: [Item]?
+    
+    static func retrieveData(completion: @escaping (ItemCategory) -> ()) {
+        
+        let ref = Database.database().reference(withPath: "Food")
+        ref.observe(.value, with: { (snapshot) in
+            
+            let itemCategory = ItemCategory()
+            itemCategory.name = "Food"
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
+            dictionaries.forEach({ (key, value) in
+                guard let dictionary = value as? [String: Any] else { return }
+                let item = Item(dictionary: dictionary)
+                itemCategory.items?.append(item)
+                //                dump(item)
+            })
+            completion(itemCategory)
+        })
+    }
     
 }
 

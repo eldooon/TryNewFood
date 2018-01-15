@@ -17,6 +17,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     let cellId = "cellId"
     let headerId = "headerId"
     let database = FirebaseData.sharedInstance
+    var itemCategories: ItemCategory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,11 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.backgroundColor = .white
         collectionView?.register(CategoriesCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        
+        ItemCategory.retrieveData { (itemCategories) in
+            self.itemCategories = itemCategories
+            self.collectionView?.reloadData()
+        }
         
         database.retrieveData {
             print("fetching data")
@@ -59,7 +65,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
-        cell.nameLabel.text = testAppCategories[indexPath.item]
+        cell.nameLabel.text = itemCategories?.name
         cell.discoverController = self
         
         return cell
