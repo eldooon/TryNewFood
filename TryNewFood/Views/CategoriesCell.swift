@@ -109,9 +109,9 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("Pushing index", indexPath.item)
-        discoverController.didSelectItemCell(Index: indexPath.item)
-        
+        if let item = itemCategory?.items[indexPath.item] {
+            discoverController.didSelectItemCell(item: item)
+        }
     }
     
 }

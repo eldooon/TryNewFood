@@ -10,6 +10,7 @@ import UIKit
 
 class ItemDetailController: UIViewController {
     
+    
     var scrollView : UIScrollView = {
         let sv = UIScrollView()
         sv.sizeToFit()

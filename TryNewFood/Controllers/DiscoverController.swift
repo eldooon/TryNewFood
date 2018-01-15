@@ -42,7 +42,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         // Dispose of any resources that can be recreated.
     }
     
-    func didSelectItemCell(Index: Int) {
+    func didSelectItemCell(item: Item) {
         
 //        let itemDetailController = ItemDetailController()
 //        let data = database.database[Index]
