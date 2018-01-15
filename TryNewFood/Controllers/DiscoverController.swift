@@ -10,34 +10,30 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-let testAppCategories = ["Food", "Drinks"]
-
 class DiscoverController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     let headerId = "headerId"
-    let database = FirebaseData.sharedInstance
-    var itemCategories: ItemCategory?
+    let database = FireBaseData.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         title = "Discover"
-        collectionView?.backgroundColor = .white
-        collectionView?.register(CategoriesCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
-        ItemCategory.retrieveData { (itemCategories) in
-            self.itemCategories = itemCategories
+        database.retrieveData {
+            print("LOOK HERE!!!")
+            dump(self.database.database)
+            let name = Notification.Name(rawValue: reloadNotificationKey)
+            NotificationCenter.default.post(name: name, object: nil)
             self.collectionView?.reloadData()
         }
         
-        database.retrieveData {
-            print("fetching data")
-            let name = Notification.Name(rawValue: reloadNotificationKey)
-            NotificationCenter.default.post(name: name, object: nil)
-        }
+        collectionView?.backgroundColor = .white
+        collectionView?.register(CategoriesCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+
         
     }
 
@@ -48,24 +44,26 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     
     func didSelectItemCell(Index: Int) {
         
-        let itemDetailController = ItemDetailController()
-        let data = database.database[Index]
-        itemDetailController.itemNameLabel.text = data.name
-        itemDetailController.itemInfoLabel.text = data.info
-        itemDetailController.itemImageView.image = data.image
-        itemDetailController.descriptionTextView.text = data.description
-
-        navigationController?.pushViewController(itemDetailController, animated: true)
+//        let itemDetailController = ItemDetailController()
+//        let data = database.database[Index]
+//        itemDetailController.itemNameLabel.text = data.name
+//        itemDetailController.itemInfoLabel.text = data.info
+//        itemDetailController.itemImageView.image = data.image
+//        itemDetailController.descriptionTextView.text = data.description
+//
+//        navigationController?.pushViewController(itemDetailController, animated: true)
         
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        print("Count Here", database.database.count)
+        return database.database.count
     }
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
-        cell.nameLabel.text = itemCategories?.name
+        
+        cell.itemCategory = database.database[indexPath.item]
         cell.discoverController = self
         
         return cell

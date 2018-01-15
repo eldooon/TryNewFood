@@ -33,7 +33,19 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
         return label
     }()
     
-    let database = FirebaseData.sharedInstance
+    let database = FireBaseData.sharedInstance
+    
+    var itemCategory: ItemCategory? {
+        didSet {
+            
+            if let name = itemCategory?.name {
+                nameLabel.text = name
+            }
+            
+            itemCollectionView.reloadData()
+            
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,14 +83,17 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return database.database.count
+        if let count = itemCategory?.items.count {
+            return count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ItemCell
         
-        cell.itemImageView.image = database.database[indexPath.item].image
-        cell.itemNameLabel.text = database.database[indexPath.item].name
+        cell.itemImageView.image = itemCategory?.items[indexPath.item].image
+        cell.itemNameLabel.text = itemCategory?.items[indexPath.item].name
 
 
         return cell
