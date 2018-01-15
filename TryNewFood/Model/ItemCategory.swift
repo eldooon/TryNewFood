@@ -8,10 +8,10 @@
 
 import UIKit
 
-//struct ItemCategory {
-//    
-//    let name: String?
-//    let items: [Items]?
-//    
-//}
+struct ItemCategory {
+    
+    let name: String?
+    let items: [Item]?
+    
+}
 
