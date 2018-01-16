@@ -33,6 +33,12 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
         return label
     }()
     
+    let dividerLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
+        return view
+    }()
+    
     let database = FireBaseData.sharedInstance
     
     var itemCategory: ItemCategory? {
@@ -76,10 +82,13 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     private func createLayout() {
         
         addSubview(nameLabel)
-        nameLabel.anchor(centerX: nil, centerY: nil, top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        nameLabel.anchor(centerX: nil, centerY: nil, top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         addSubview(itemCollectionView)
         itemCollectionView.anchor(centerX: nil, centerY: nil, top: nameLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        addSubview(dividerLineView)
+        dividerLineView.anchor(centerX: nil, centerY: nil, top: itemCollectionView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
