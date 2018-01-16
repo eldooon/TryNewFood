@@ -13,23 +13,32 @@ class FireBaseData {
         
     static let sharedInstance = FireBaseData()
     var database = [ItemCategory]()
-    let ref = Database.database().reference(withPath: "Food")
+    let ref = Database.database().reference()
+
     
     func retrieveData(completion: @escaping () -> ()) {
         
-        let newItemCategory = ItemCategory()
         ref.observe(.value, with: { (snapshot) in
             
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            newItemCategory.name = self.ref.key
             dictionaries.forEach({ (key, value) in
+                let newItemCategory = ItemCategory()
+                newItemCategory.name = key
+                print("Item category name:", newItemCategory.name)
                 guard let dictionary = value as? [String: Any] else { return }
-                let item = Item(dictionary: dictionary)
-                newItemCategory.items.append(item)
+                
+                guard let testvalue = value as? [String: Any] else { return }
+                for eachValue in testvalue {
+                    guard let value = eachValue.value as? [String: Any] else {return}
+                    let item = Item(dictionary: value)
+                    newItemCategory.items.append(item)
+                    print("eachvalue", eachValue.value)
+                }
+                self.database.append(newItemCategory)
             })
-            self.database.append(newItemCategory)
             completion()
         })
+        
     }
 
 }
