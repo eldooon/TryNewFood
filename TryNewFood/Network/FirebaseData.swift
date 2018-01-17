@@ -12,7 +12,8 @@ import FirebaseDatabase
 class FireBaseData {
         
     static let sharedInstance = FireBaseData()
-    var database = [ItemCategory]()
+    var itemDatabase = [ItemCategory]()
+    var featuredDatabase = [ItemCategory]()
     let ref = Database.database().reference()
 
     
@@ -32,7 +33,11 @@ class FireBaseData {
                     newItemCategory.items.append(item)
                     print("eachvalue", eachValue.value)
                 }
-                self.database.append(newItemCategory)
+                if key == "Featured"{
+                    self.featuredDatabase.append(newItemCategory)
+                } else {
+                    self.itemDatabase.append(newItemCategory)
+                }
             })
             completion()
         })

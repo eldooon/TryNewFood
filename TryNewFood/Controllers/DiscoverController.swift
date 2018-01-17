@@ -24,7 +24,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         
         database.retrieveData {
             print("LOOK HERE!!!")
-            dump(self.database.database)
+            dump(self.database.itemDatabase)
             let name = Notification.Name(rawValue: reloadNotificationKey)
             NotificationCenter.default.post(name: name, object: nil)
             self.collectionView?.reloadData()
@@ -52,14 +52,14 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Count Here", database.database.count)
-        return database.database.count
+        print("Count Here", database.itemDatabase.count)
+        return database.itemDatabase.count
     }
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
         
-        cell.itemCategory = database.database[indexPath.item]
+        cell.itemCategory = database.itemDatabase[indexPath.item]
         cell.discoverController = self
         
         return cell
