@@ -24,8 +24,6 @@ class FireBaseData {
             dictionaries.forEach({ (key, value) in
                 let newItemCategory = ItemCategory()
                 newItemCategory.name = key
-                print("Item category name:", newItemCategory.name)
-                guard let dictionary = value as? [String: Any] else { return }
                 
                 guard let testvalue = value as? [String: Any] else { return }
                 for eachValue in testvalue {
