@@ -44,6 +44,13 @@ class FeaturedCell: CategoriesCell {
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width, height: frame.height)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let item = itemCategory?.items[indexPath.item] {
+            discoverController.didSelectFeaturedItemCell()
+        }
+    }
 
 }
 

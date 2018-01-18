@@ -8,17 +8,20 @@
 
 import UIKit
 
-private let cellId = "cellId"
 
-class FeaturedDetailController: UICollectionViewController {
+class FeaturedDetailController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    private let cellId = "cellId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.backgroundColor = .white
         self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
 
 
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,13 +30,13 @@ class FeaturedDetailController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return 5
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

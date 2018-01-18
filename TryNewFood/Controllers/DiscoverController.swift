@@ -49,6 +49,14 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         
     }
 
+    func didSelectFeaturedItemCell() {
+        
+        let featuredDetailControler = FeaturedDetailController(collectionViewLayout: UICollectionViewLayout())
+        
+        navigationController?.pushViewController(featuredDetailControler, animated: true)
+        
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return database.itemDatabase.count
