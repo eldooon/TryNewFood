@@ -23,8 +23,6 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         title = "Discover"
         
         database.retrieveData {
-            print("LOOK HERE!!!")
-            dump(self.database.itemDatabase)
             let name = Notification.Name(rawValue: reloadNotificationKey)
             NotificationCenter.default.post(name: name, object: nil)
             self.collectionView?.reloadData()
@@ -52,10 +50,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return database.featuredDatabase.count
-//        }
-        print("SETTING TO ITEM DATABASE COUNT:", database.featuredDatabase.count)
+        
         return database.itemDatabase.count
     }
  
@@ -71,7 +66,6 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
             cell.itemCategory = database.itemDatabase[indexPath.item]
-            print("SETTING TO ITEM DATABASE")
         }
         cell.discoverController = self
         
@@ -94,20 +88,5 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         return CGSize(width: view.frame.width, height: 180)
     }
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: view.frame.width, height: 200)
-//    }
-//
-//
-//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//
-//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderCell
-//        
-//        print("Setting up header")
-////        header.itemCategory = database.itemDatabase[indexPath.item]
-////        header.discoverController = self
-//
-//        return header
-//    }
 }
 
