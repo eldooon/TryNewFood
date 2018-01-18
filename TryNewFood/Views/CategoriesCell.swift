@@ -79,7 +79,8 @@ class CategoriesCell: UICollectionViewCell, UICollectionViewDataSource, UICollec
     @objc func reloadDataAfterFetch() {
         itemCollectionView.reloadData()
     }
-    private func createLayout() {
+    
+    func createLayout() {
         
         addSubview(nameLabel)
         nameLabel.anchor(centerX: nil, centerY: nil, top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)

@@ -32,7 +32,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         
         collectionView?.backgroundColor = .white
         collectionView?.register(CategoriesCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(FeaturedCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
 
         
     }
@@ -53,6 +53,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("Count Here", database.itemDatabase.count)
+        print("Count Here", database.featuredDatabase.count)
         return database.itemDatabase.count
     }
  
@@ -77,16 +78,20 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         return CGSize(width: view.frame.width, height: 180)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderCell
-
-        return header
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: view.frame.width, height: 200)
+//    }
+//
+//
+//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//
+//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderCell
+//        
+//        print("Setting up header")
+////        header.itemCategory = database.itemDatabase[indexPath.item]
+////        header.discoverController = self
+//
+//        return header
+//    }
 }
 
