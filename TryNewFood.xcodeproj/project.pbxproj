@@ -104,9 +104,9 @@
 		BE109509200006A800AD35E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE10950F200414EA00AD35E7 /* CategoriesCell.swift */,
 				BEA25B731FFC383B00FFD021 /* ItemCell.swift */,
 				BE10950C2000113900AD35E7 /* FeaturedCell.swift */,
-				BE10950F200414EA00AD35E7 /* CategoriesCell.swift */,
 				BE5F688420112B76006F28EF /* FeaturedItemCell.swift */,
 			);
 			path = Views;
