@@ -32,7 +32,7 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         
         collectionView?.backgroundColor = .white
         collectionView?.register(CategoriesCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.register(FeaturedCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(FeaturedCell.self, forCellWithReuseIdentifier: headerId)
 
         
     }
@@ -52,15 +52,27 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Count Here", database.itemDatabase.count)
-        print("Count Here", database.featuredDatabase.count)
+//        if section == 0 {
+//            return database.featuredDatabase.count
+//        }
+        print("SETTING TO ITEM DATABASE COUNT:", database.featuredDatabase.count)
         return database.itemDatabase.count
     }
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
         
-        cell.itemCategory = database.itemDatabase[indexPath.item]
+        let cell: CategoriesCell
+        
+        if indexPath.item == 0 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerId, for: indexPath) as! FeaturedCell
+            cell.itemCategory = database.featuredDatabase[indexPath.item]
+        }
+        
+        else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoriesCell
+            cell.itemCategory = database.itemDatabase[indexPath.item]
+            print("SETTING TO ITEM DATABASE")
+        }
         cell.discoverController = self
         
         return cell
@@ -75,6 +87,10 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if indexPath.item == 0  {
+            return CGSize(width: view.frame.width, height: 250)
+        }
         return CGSize(width: view.frame.width, height: 180)
     }
 

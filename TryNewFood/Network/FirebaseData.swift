@@ -33,11 +33,13 @@ class FireBaseData {
                     newItemCategory.items.append(item)
                     print("eachvalue", eachValue.value)
                 }
-                if key == "Featured"{
-                    self.featuredDatabase.append(newItemCategory)
-                } else {
-                    self.itemDatabase.append(newItemCategory)
-                }
+//                if key == "Featured"{
+//                    self.featuredDatabase.append(newItemCategory)
+//                } else {
+//                    self.itemDatabase.append(newItemCategory)
+//                }
+                self.featuredDatabase.append(newItemCategory)
+                self.itemDatabase.append(newItemCategory)
             })
             completion()
         })
