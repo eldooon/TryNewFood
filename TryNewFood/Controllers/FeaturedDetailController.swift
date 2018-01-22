@@ -18,7 +18,7 @@ class FeaturedDetailController: UICollectionViewController, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white 
+        self.collectionView?.backgroundColor = .white 
         self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         self.collectionView?.register(FeaturedHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
 
@@ -47,7 +47,7 @@ class FeaturedDetailController: UICollectionViewController, UICollectionViewDele
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 5
+        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

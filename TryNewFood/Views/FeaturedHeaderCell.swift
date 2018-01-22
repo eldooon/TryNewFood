@@ -12,7 +12,7 @@ class FeaturedHeaderCell: UICollectionViewCell {
     
     var featuredImageView : UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .blue
+        iv.backgroundColor = .peterRiver
         iv.contentMode = .scaleAspectFill
         iv.layer.masksToBounds = true
         return iv
@@ -28,12 +28,12 @@ class FeaturedHeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .blue
+        backgroundColor = .white
         addSubview(featuredNameLabel)
         featuredNameLabel.anchor(centerX: centerXAnchor, centerY: nil, top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         addSubview(featuredImageView)
-        featuredImageView.anchor(centerX: nil, centerY: nil, top: featuredNameLabel.topAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 220)
+        featuredImageView.anchor(centerX: nil, centerY: nil, top: featuredNameLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 260)
         
     }
     
