@@ -48,7 +48,7 @@ class FeaturedCell: CategoriesCell {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let item = itemCategory?.items[indexPath.item] {
-            discoverController.didSelectFeaturedItemCell()
+            discoverController.didSelectFeaturedItemCell(item: item)
         }
     }
 

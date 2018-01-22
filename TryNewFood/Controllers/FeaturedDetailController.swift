@@ -14,7 +14,23 @@ class FeaturedDetailController: UICollectionViewController, UICollectionViewDele
     private let cellId = "cellId"
     private let headerId = "headerId"
     private let detailCellId = "detailCellId"
-
+    
+    var item: Item? {
+        didSet {
+            
+            if let name = item?.name {
+                itemName = name
+            }
+            
+            if let image = item?.image {
+                itemImage = image
+            }
+        }
+    }
+    
+    var itemName: String?
+    var itemImage: UIImage?
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +94,8 @@ class FeaturedDetailController: UICollectionViewController, UICollectionViewDele
                                  at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! FeaturedHeaderCell
+        header.featuredNameLabel.text = itemName
+        header.featuredImageView.image = itemImage
         
         return header
 

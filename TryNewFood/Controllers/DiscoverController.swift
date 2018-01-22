@@ -49,9 +49,10 @@ class DiscoverController: UICollectionViewController, UICollectionViewDelegateFl
         
     }
 
-    func didSelectFeaturedItemCell() {
+    func didSelectFeaturedItemCell(item: Item) {
         
         let featuredDetailControler = FeaturedDetailController(collectionViewLayout: UICollectionViewFlowLayout())
+        featuredDetailControler.item = item
         
         navigationController?.pushViewController(featuredDetailControler, animated: true)
         
