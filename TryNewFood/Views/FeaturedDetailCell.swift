@@ -12,6 +12,7 @@ class FeaturedDetailCell: UICollectionViewCell {
     
     let textView: UITextView = {
         let tv = UITextView()
+        tv.text = "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"
         return tv
     }()
     

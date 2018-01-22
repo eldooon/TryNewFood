@@ -13,6 +13,7 @@ class FeaturedDetailController: UICollectionViewController, UICollectionViewDele
 
     private let cellId = "cellId"
     private let headerId = "headerId"
+    private let detailCellId = "detailCellId"
 
     
     override func viewDidLoad() {
@@ -20,6 +21,7 @@ class FeaturedDetailController: UICollectionViewController, UICollectionViewDele
         
         self.collectionView?.backgroundColor = .white 
         self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        self.collectionView?.register(FeaturedDetailCell.self, forCellWithReuseIdentifier: detailCellId)
         self.collectionView?.register(FeaturedHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
 
 
@@ -47,12 +49,22 @@ class FeaturedDetailController: UICollectionViewController, UICollectionViewDele
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 1
+        return 2
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .red
+        let cell: UICollectionViewCell
+            
+        if indexPath.item == 0 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+            cell.backgroundColor = .red
+        }
+        
+        else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: detailCellId, for: indexPath) as! FeaturedDetailCell
+            cell.backgroundColor = .blue
+        }
+
         return cell
     }
     
