@@ -28,6 +28,7 @@ class FeaturedHeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = .blue
         addSubview(featuredNameLabel)
         featuredNameLabel.anchor(centerX: centerXAnchor, centerY: nil, top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
